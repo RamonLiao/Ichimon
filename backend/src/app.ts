@@ -5,6 +5,8 @@ import { healthRoutes } from './routes/health.js'
 import { stationsRoutes } from './routes/stations.js'
 import { fighterRoutes } from './routes/fighter.js'
 import { qrRoutes } from './routes/qr.js'
+import { configRoutes } from './routes/config.js'
+import { momentsRoutes } from './routes/moments.js'
 import { buildServices, type Services } from './config.js'
 
 declare module 'fastify' {
@@ -51,5 +53,7 @@ export async function buildApp(): Promise<FastifyInstance> {
   await app.register(stationsRoutes)
   await app.register(fighterRoutes)
   await app.register(qrRoutes)
+  await app.register(configRoutes)
+  await app.register(momentsRoutes)
   return app
 }
