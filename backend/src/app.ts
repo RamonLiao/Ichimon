@@ -25,7 +25,7 @@ export async function buildApp(): Promise<FastifyInstance> {
   app.setErrorHandler((err: FastifyError, req, reply) => {
     if (err instanceof AppError) {
       return reply.status(err.httpStatus).send({
-        error: { code: err.code, message: err.message, details: err.details },
+        error: { code: err.code, message: err.humanMessage, details: err.details },
       })
     }
     if (err.validation) {

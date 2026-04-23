@@ -1,12 +1,14 @@
 export class AppError extends Error {
+  public readonly humanMessage: string
   constructor(
     public readonly code: string,
     public readonly httpStatus: number,
     message: string,
     public readonly details?: unknown,
   ) {
-    super(message)
+    super(`${code}: ${message}`)
     this.name = 'AppError'
+    this.humanMessage = message
   }
 }
 
