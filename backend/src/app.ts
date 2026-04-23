@@ -34,7 +34,14 @@ export async function buildApp(): Promise<FastifyInstance> {
   app.decorate('services', services)
 
   await app.register(cors, { origin: env.ALLOWED_ORIGINS, credentials: false })
-  await app.register(rateLimit, { global: false, max: 1000, timeWindow: '1 minute' })
+  await app.register(rateLimit, {
+    global: false,
+    max: 1000,
+    timeWindow: '1 minute',
+    enableDraftSpec: false,
+    skipOnError: true,
+    allowList: env.NODE_ENV === 'test' ? () => true : undefined,
+  })
   await app.register(swagger, {
     openapi: {
       info: { title: 'Ichimon Backend', version: '0.1.0' },
@@ -52,6 +59,11 @@ export async function buildApp(): Promise<FastifyInstance> {
     if (err.validation) {
       return reply.status(400).send({
         error: { code: 'VALIDATION_ERROR', message: err.message, details: err.validation },
+      })
+    }
+    if (typeof err.statusCode === 'number' && err.statusCode >= 400 && err.statusCode < 500) {
+      return reply.status(err.statusCode).send({
+        error: { code: err.code ?? 'CLIENT_ERROR', message: err.message },
       })
     }
     req.log.error({ err }, 'unhandled')
