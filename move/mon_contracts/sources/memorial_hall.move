@@ -27,6 +27,7 @@ const EMomentNotFinalized: u64 = 102;
 const ENotGuardian: u64 = 103;
 const EInvalidStatusTransition: u64 = 104;
 const EVotePointsZero: u64 = 105;
+const EEmptyMetadata: u64 = 106;
 
 // === Status codes (spec §4.1) ===
 const STATUS_CANDIDATE: u8 = 0;
@@ -92,6 +93,8 @@ public fun propose_moment(
 ) {
     let lvl = fan_sbt::level(proposer_sbt);
     assert!(lvl >= 2, EProposerNotStation);
+    assert!(!std::string::is_empty(&title), EEmptyMetadata);
+    assert!(!std::string::is_empty(&media_walrus_blob_id), EEmptyMetadata);
     let now = clock::timestamp_ms(clock);
     let proposer_tier = if (lvl >= 3) 1 else 2;
     let moment = MemorialMoment {
