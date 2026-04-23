@@ -1,4 +1,4 @@
-import Fastify, { type FastifyInstance } from 'fastify'
+import Fastify, { type FastifyInstance, type FastifyError } from 'fastify'
 import { parseEnv, type Env } from './env.js'
 import { AppError } from './errors.js'
 import { healthRoutes } from './routes/health.js'
@@ -22,7 +22,7 @@ export async function buildApp(): Promise<FastifyInstance> {
   })
   app.decorate('config', env)
 
-  app.setErrorHandler((err, req, reply) => {
+  app.setErrorHandler((err: FastifyError, req, reply) => {
     if (err instanceof AppError) {
       return reply.status(err.httpStatus).send({
         error: { code: err.code, message: err.message, details: err.details },
