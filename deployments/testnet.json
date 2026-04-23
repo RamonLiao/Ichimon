@@ -1,7 +1,9 @@
 {
   "network": "testnet",
   "rpcUrl": "https://fullnode.testnet.sui.io:443",
-  "packageId": "0x267e74605140e3d467c740be1a7d5cb43814b1776d79fd517ece9ef2ded1dd61",
+  "packageId": "0xeea4ccd93c56c0bd785ed6b98edc500f7d49ec7a499a215db9cdf81495dd51ee",
+  "originalPackageId": "0x267e74605140e3d467c740be1a7d5cb43814b1776d79fd517ece9ef2ded1dd61",
+  "packageVersion": 2,
   "modules": {
     "fanSbt": "fan_sbt",
     "memorialHall": "memorial_hall",
@@ -37,9 +39,14 @@
   "publisher": "0x1509b5fdf09296b2cf749a710e36da06f5693ccd5b2144ad643b3a895abcbc4c",
   "deployTx": "J1s5Ftr51zuHGP18P92HuD3Utsh7ToCuSt5UdrhvwkSj",
   "deployedAt": "2026-04-23",
+  "upgradeTx": "85oV8XTDPg9Z4WVrHGgXRsz3MBE7MioKx14Skp8Fkxox",
+  "upgradedAt": "2026-04-24",
+  "upgradeNotes": "v2: propose_moment now rejects empty title/blob_id (EEmptyMetadata=106). Description still allowed empty.",
   "explorer": {
-    "package": "https://testnet.suivision.xyz/package/0x267e74605140e3d467c740be1a7d5cb43814b1776d79fd517ece9ef2ded1dd61",
-    "tx": "https://testnet.suivision.xyz/txblock/J1s5Ftr51zuHGP18P92HuD3Utsh7ToCuSt5UdrhvwkSj"
+    "package": "https://testnet.suivision.xyz/package/0xeea4ccd93c56c0bd785ed6b98edc500f7d49ec7a499a215db9cdf81495dd51ee",
+    "originalPackage": "https://testnet.suivision.xyz/package/0x267e74605140e3d467c740be1a7d5cb43814b1776d79fd517ece9ef2ded1dd61",
+    "deployTx": "https://testnet.suivision.xyz/txblock/J1s5Ftr51zuHGP18P92HuD3Utsh7ToCuSt5UdrhvwkSj",
+    "upgradeTx": "https://testnet.suivision.xyz/txblock/85oV8XTDPg9Z4WVrHGgXRsz3MBE7MioKx14Skp8Fkxox"
   },
   "entryFunctions": {
     "mintFanCard": {

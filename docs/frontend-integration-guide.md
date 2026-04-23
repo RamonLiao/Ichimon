@@ -3,7 +3,7 @@
 > 目標讀者：Kenny（前端）
 > Backend：`https://ichimon.fly.dev`
 > Network：Sui **testnet**
-> 最後更新：2026-04-24
+> 最後更新：2026-04-24（v2 upgrade：propose_moment 拒絕空 title/blob_id，`EEmptyMetadata=106`）
 
 ---
 
@@ -38,7 +38,7 @@
 const cfg = await fetch('https://ichimon.fly.dev/api/config').then(r => r.json())
 // {
 //   network: 'testnet',
-//   pkg_id: '0x267e74605140e3d467c740be1a7d5cb43814b1776d79fd517ece9ef2ded1dd61',
+//   pkg_id: '0xeea4ccd93c56c0bd785ed6b98edc500f7d49ec7a499a215db9cdf81495dd51ee',  // v2 (upgraded 2026-04-24)
 //   mint_registry: {
 //     object_id: '0x1ad98a64...',
 //     initial_shared_version: 828957603   // ← PTB 必用
@@ -319,8 +319,9 @@ VITE_ISSUER_TOKEN=<問我拿，站姐端才需要>
 
 - **Swagger**：<https://ichimon.fly.dev/docs> — 直接試 API
 - **Ready check**：`curl https://ichimon.fly.dev/ready` — 確認 backend + Upstash + Sui gRPC 都通
-- **Explorer**：<https://testnet.suivision.xyz/package/0x267e74605140e3d467c740be1a7d5cb43814b1776d79fd517ece9ef2ded1dd61>
-- **Deploy tx**：<https://testnet.suivision.xyz/txblock/J1s5Ftr51zuHGP18P92HuD3Utsh7ToCuSt5UdrhvwkSj>
+- **Explorer (v2)**：<https://testnet.suivision.xyz/package/0xeea4ccd93c56c0bd785ed6b98edc500f7d49ec7a499a215db9cdf81495dd51ee>
+- **Upgrade tx**：<https://testnet.suivision.xyz/txblock/85oV8XTDPg9Z4WVrHGgXRsz3MBE7MioKx14Skp8Fkxox>
+- **Original package (v1)**：<https://testnet.suivision.xyz/package/0x267e74605140e3d467c740be1a7d5cb43814b1776d79fd517ece9ef2ded1dd61>
 
 ---
 
