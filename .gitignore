@@ -7,3 +7,14 @@ docs/superpowers/
 !.env.example
 
 qr-key.txt
+
+# Claude personal
+CLAUDE.md
+.claude/settings.local.json
+.claude/project-type
+
+# Personal brainstorming / drafts
+Ideas/
+
+# Sui local publish artifacts
+move/mon_contracts/Published.toml
